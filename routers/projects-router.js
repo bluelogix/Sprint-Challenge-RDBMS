@@ -37,7 +37,7 @@ const db = knex(knexConfig.development)
 
   // GET for retrieving a project by its id
 
-  //GET ID with STUDENTS
+  //GET ID with project actions
   router.get('/:id/actions', (req, res) => {
     const id = req.params.id
  
