@@ -35,6 +35,26 @@ const db = knex(knexConfig.development)
     })
   })
 
+  // GET for retrieving a project by its id
+
+  //GET ID with STUDENTS
+  router.get('/:id/actions', (req, res) => {
+    const id = req.params.id
+ 
+    db('actions')
+    .where({ 'project_id': id })
+    .then(action => {
+       if (action.length > 0) {
+        res.status(200).json(action);
+      } else {
+        res.status(404).json({ message: 'The id cannot be found' });
+      }
+    }).catch(err => {
+      res.status(500).json(err)
+    })
+  });
+
+
 
 
   module.exports = router;
